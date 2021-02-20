@@ -1,0 +1,43 @@
+service: gist-viewer-graphql
+
+plugins:
+  - serverless-offline
+  - serverless-pseudo-parameters
+
+custom:
+  # use the stage passed as a command line flag. If none is passed,
+  # default to using the stage specified in 'provider' section below
+  setStage: ${opt:stage, self:provider.stage}
+  setSecurityGroup:
+    prod: ''
+    local: 'sg-000'
+  setSubnet:
+    prod: ''
+    local: 'subnet-000'
+  setEnvironment:
+    ENV:
+      local: 'local'
+      prod: 'prod'
+
+provider:
+  name: aws
+  stage: local
+  useDotenv: true
+  environment:
+    # use the ENV value set in the 'custom' section above
+    ENV: ${self:custom.setEnvironment.ENV.${self:custom.setStage}}
+  runtime: nodejs14.x
+  versionFunctions: false
+  region: us-east-2
+  vpc:
+    securityGroupIds:
+      - ${self:custom.setSecurityGroup.${self:custom.setStage}}
+    subnetIds:
+      - ${self:custom.setSubnet.${self:custom.setStage}}
+functions:
+  graphql:
+    handler: handler.graphqlHandler
+    events:
+    - http:
+        path: graphql
+        method: post

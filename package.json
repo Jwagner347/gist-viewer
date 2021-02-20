@@ -1,0 +1,29 @@
+{
+  "name": "gist-viewer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jwagner347/gist-viewer.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jwagner347/gist-viewer/issues"
+  },
+  "homepage": "https://github.com/Jwagner347/gist-viewer#readme",
+  "devDependencies": {
+    "serverless": "^2.25.2",
+    "serverless-offline": "^6.8.0",
+    "serverless-pseudo-parameters": "^2.5.0"
+  },
+  "dependencies": {
+    "apollo-server-lambda": "^2.21.0",
+    "graphql": "^15.5.0"
+  }
+}
