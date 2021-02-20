@@ -1,14 +1,23 @@
-import { graphqlLambda } from 'apollo-server-lambda';
-import { makeExecutableSchema } from 'graphql-tools';
-import { schema } from './schema';
-import { resolvers } from './resolvers';
+const { ApolloServer, gql } = require('apollo-server-lambda');
+// const { schema } = require('./schema');
+// const { resolvers } = require('./resolvers');
 
-const gistViewerSchema = makeExecutableSchema({
-  typeDefs: schema,
+const typeDefs = gql`
+  type Query {
+    hello: String
+  }
+`;
+
+// Provide resolver functions for your schema fields
+const resolvers = {
+  Query: {
+    hello: () => 'Hello world!',
+  },
+};
+
+const server = new ApolloServer({
+  typeDefs,
   resolvers,
 });
 
-exports.graphqlHandler = (event, context) => {
-  const handler = graphqlLambda({ schema: gistViewerSchema });
-  return handler(event, context);
-};
+exports.graphqlHandler = server.createHandler();
