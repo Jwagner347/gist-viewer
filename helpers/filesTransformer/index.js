@@ -1,13 +1,24 @@
 /**
- * Transforms each key-value pair of an Object to the value (an object) in a new array
+ * Transforms the files property to a new array of file objects
  * 
- * @param {Object} filesObject - Object of files for a particular gist
+ * @param {Object} gistObject - Object of files for a particular gist
  * @returns {Array} - Array of file objects
  */
 
-module.exports = (filesObject) => {
+module.exports = (gistObject) => {
 	const isObject = obj => typeof obj === 'object' && !Array.isArray(obj);
 
-	if (!isObject(filesObject)) throw new Error('filesObject must be of type object')
+	if (!isObject(gistObject)) throw new Error('gistObject must be of type object');
+	if(!gistObject["files"]) throw new Error('files property missing!');
+	if(!isObject(gistObject["files"])) throw new Error('files property must be of type object');
+
+	const transformedFiles = Object.values(gistObject["files"]);
+
+	const gistWithTransformedFiles = {
+		...gistObject,
+		files: transformedFiles,
+	}
+
+	return gistWithTransformedFiles;
 
 }

@@ -15,9 +15,18 @@ type Owner {
 	repos_url: String
 }
 
+type File {
+	filename: String!
+	type: String!
+	language: String!
+	raw_url: String!
+	size: Int!
+}
+
 type Gist {
 	url: String!
 	owner: Owner!
+	files: [File!]
 }
 
 type Gists {
