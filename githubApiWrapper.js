@@ -1,5 +1,5 @@
 const fetch = require('node-fetch');
-const githubApi = `https://api.github.com`
+const githubApi = `https://api.github.com`;
 
 module.exports = {
 		getUserGists: async (args) => {
