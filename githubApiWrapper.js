@@ -12,5 +12,18 @@ module.exports = {
 			const gistsWithTransformedFiles = gists.map(transformFiles);
 
 			return { gists: gistsWithTransformedFiles };
-		}
+		},
+
+		getGistById: async (args) => {
+			const id = args.id;
+			const url = `${githubApi}/gists/${id}`
+
+			const response = await fetch(url);
+			const gist = await response.json();
+			console.log('gist: ', gist);
+			const gistWithTransformedFiles = transformFiles(gist);
+
+			return gistWithTransformedFiles;
+		},
+
 };

@@ -1,9 +1,12 @@
 const schema = `
 type Query {
 	getUserGists(username: String!): Gists
+	getGistById(id: String!): Gist
 }
 
 type Owner {
+	login: String!
+	id: Int!
 	avatar_url: String
 	gravatar_id: String
 	url: String!
@@ -27,6 +30,17 @@ type Gist {
 	url: String!
 	owner: Owner!
 	files: [File!]
+	forks_url: String
+	commits_url: String!
+	id: String!
+	git_pull_url: String!
+	git_push_url: String!
+	html_url: String!
+	created_at: String!
+	updated_at: String
+	description: String
+	comments: Int
+	comments_url: String
 }
 
 type Gists {
