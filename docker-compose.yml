@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  db:
+    build:
+      context: .
+      dockerfile: ./docker/local/postgres/Dockerfile
+    container_name: postgres
+    image: postgres
+    ports: 
+      # Expose port 5432 in the running container and map to and expose port 5432 on the host
+      - '5432:5432'
+    environment:
+      POSTGRES_DB: gist_viewer
+      POSTGRES_ROOT_PASSWORD: password
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
