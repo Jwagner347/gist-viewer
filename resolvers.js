@@ -1,6 +1,8 @@
+const { getUserGists } = require('./githubApiWrapper');
+
 const resolvers = {
   Query: {
-    hello: () => 'Hello world!',
+		getUserGists: async (root, args) => await getUserGists(args),
   },
 };
 
