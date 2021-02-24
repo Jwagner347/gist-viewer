@@ -3,7 +3,7 @@ const { schema } = require('./schema');
 const { resolvers } = require('./resolvers');
 
 const server = new ApolloServer({
-  typeDefs: schema,
+	typeDefs: schema,
   resolvers,
 });
 

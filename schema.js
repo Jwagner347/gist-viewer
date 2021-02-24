@@ -4,6 +4,23 @@ type Query {
 	getGistById(id: String!): Gist
 }
 
+type Mutation {
+	createFavorite(gistInfo: FavoritedGist): FavoriteResponse
+}
+
+input FavoritedGist {
+	owner_id: Int!
+	owner_name: String!
+	github_id: String!
+	url: String!
+	favorited: Boolean
+}
+
+type FavoriteResponse {
+	success: Boolean!
+	github_id: String!
+}
+
 type Owner {
 	login: String!
 	id: Int!
