@@ -1,8 +1,11 @@
 const {
 	getUserGists,
 	getGistById,
-	createFavorite,
 } = require('./githubApiWrapper');
+
+const {
+	createFavorite,
+} = require('./mutations');
 
 const resolvers = {
   Query: {
