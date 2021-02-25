@@ -2,6 +2,7 @@ const schema = `
 type Query {
 	getUserGists(username: String!): Gists
 	getGistById(id: String!): Gist
+	getAllFavorites: Favorites
 }
 
 type Mutation {
@@ -25,6 +26,10 @@ input UpdatedGist {
 type FavoriteResponse {
 	success: Boolean!
 	github_id: String!
+}
+
+type Favorites {
+	favorites: [FavoriteResponse]
 }
 
 type Owner {
