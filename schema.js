@@ -24,7 +24,9 @@ input UpdatedGist {
 }
 
 type FavoriteResponse {
-	success: Boolean!
+	owner_id: Int!
+	owner_name: String!
+	url: String!
 	github_id: String!
 }
 

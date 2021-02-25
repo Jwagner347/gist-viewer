@@ -28,7 +28,6 @@ module.exports = {
 			await client.query(query);
 			await client.end();
 			// todo: if insert fails, throw error 
-			// todo: move this function to separate file
 			return { success: true, github_id };
 			
 		},
