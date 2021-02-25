@@ -5,6 +5,7 @@ const {
 
 const {
 	createFavorite,
+	updateFavorite,
 } = require('./mutations');
 
 const resolvers = {
@@ -14,6 +15,7 @@ const resolvers = {
   },
   Mutation: {
 		createFavorite: async (root, args) => await createFavorite(args),
+		updateFavorite: async (root, args) => await updateFavorite(args),
   },
 };
 

@@ -6,6 +6,7 @@ type Query {
 
 type Mutation {
 	createFavorite(gistInfo: FavoritedGist): FavoriteResponse
+	updateFavorite(gistInfo: UpdatedGist): FavoriteResponse
 }
 
 input FavoritedGist {
@@ -13,6 +14,11 @@ input FavoritedGist {
 	owner_name: String!
 	github_id: String!
 	url: String!
+	favorited: Boolean
+}
+
+input UpdatedGist {
+	github_id: String!
 	favorited: Boolean
 }
 

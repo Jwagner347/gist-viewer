@@ -25,5 +25,29 @@ module.exports = {
 			return { success: true, github_id };
 			
 		},
+		updateFavorite: async ({gistInfo}) => {
+			
+			const client = new Client({
+				user: 'postgres',
+				host: 'localhost',
+				database: 'gist_viewer',
+				password: 'password',
+				port: 5432,
+			});
+
+			await client.connect();
+			const { github_id, favorited } = gistInfo;
+
+			const query = {
+				text: 'UPDATE gists SET favorited = $1 WHERE github_id = $2',
+				values: [favorited, github_id],
+			};
+
+			await client.query(query);
+			await client.end();
+			// todo: if insert fails, throw error 
+			return { success: true, github_id };
+			
+		},
 
 };
