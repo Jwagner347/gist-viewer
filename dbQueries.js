@@ -1,8 +1,6 @@
 const dbConfig = require('./dbConfig');
 const createDbClient = require('./utils/createDbClient');
 
-// todo: change favorites response in schema to return everything
-
 module.exports = {
 		getAllFavorites: async () => {
 			const client = createDbClient(dbConfig);
