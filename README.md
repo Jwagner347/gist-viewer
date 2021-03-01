@@ -1,5 +1,7 @@
 # gist-viewer
 
+The Gist Viewer allows you to easily access information on public gists via a GraphQL API. It also allows you to save your favorite gists to a postgres database, which runs in docker.
+
 ## Startup Instructions
 
 1. Download and Install Docker Community Edition [https://store.docker.com/editions/community/docker-ce-desktop-mac](https://store.docker.com/editions/community/docker-ce-desktop-mac)
